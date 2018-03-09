@@ -15,18 +15,23 @@ class sendMessage:
         self.driver=webdriver.Chrome()
         self.driver.get(url='https://web.whatsapp.com/')
         self.timeout = 100
-    def searchChat(self):
+    def searchChat(self,name,message1):
         time.sleep(25)
         search= self.driver.find_element_by_id("input-chatlist-search")
-        search.send_keys("anmol" + Keys.ENTER)
+        search.send_keys(name + Keys.ENTER)
         time.sleep(15)
         # clickSearch=self.driver.find_element_by_xpath("/html/body/div/div/div/div[2]/div/div[3]/div/div/div/div[3]/div/div/div/div[1]/div[1]/span").click()
         time.sleep(10)
         message=self.driver.find_element_by_xpath("/html/body/div/div/div/div[3]/div/footer/div[1]/div[2]/div/div[2]")
-        message.send_keys("anmol" + Keys.ENTER)
-        # time.sleep(5)
-        # click=self.driver.find_element_by_xpath("/html/body/div/div/div/div[3]/div/footer/div[1]/button").click()
+        message.send_keys(message1 + Keys.ENTER)
+        #time.sleep(3)
+        #click=self.driver.find_element_by_xpath("/html/body/div/div/div/div[3]/div/footer/div[1]/button").click()
+filepath="String.txt"
+with open(filepath) as fp:
+    name=fp.readline()
+    message1=fp.readline()
+#print(line1,line2)
 class_object=sendMessage()
-class_object.searchChat()
+class_object.searchChat(name,message1)
 
 
