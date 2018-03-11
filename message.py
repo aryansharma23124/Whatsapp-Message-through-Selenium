@@ -16,12 +16,13 @@ class sendMessage:
         self.driver.get(url='https://web.whatsapp.com/')
         self.timeout = 100
     def searchChat(self,name):
-        #time.sleep(25)
+
         try:
             element_present = EC.presence_of_element_located((By.ID, 'input-chatlist-search'))
             WebDriverWait(self.driver, self.timeout).until(element_present)
         except TimeoutException:
             print("Not Connected")
+        time.sleep(5)
         search= self.driver.find_element_by_id("input-chatlist-search")
         search.send_keys(name + Keys.ENTER)
        # time.sleep(15)
